@@ -507,7 +507,7 @@
     </div>
     
     <audio id="bgMusic" loop>
-        <source src="https://ws.stream.qqmusic.qq.com/C4000006g6ww1wlFmR.m4a?guid=253432849&vkey=97105ADC8B367F46DB8ECBC7DE0085545A84E91E8FE42E9268744D131F9C366637EC8CA559AF60B033F81D54E8B06FFBEDE22FF2B5750132__v21e2a1734&uin=&fromtag=120032" type="audio/mpeg">
+        <source src="https://ra-sycdn.kuwo.cn/8a1ae2a5d7096bf61e9f408266e563e0/6820288d/resource/n3/128/29/87/3067679498.mp3?bitrate$128&from=vip" type="audio/mpeg">
     </audio>
     
     <script>
@@ -601,12 +601,17 @@
             let currentIndex = 0;
             
             function showPhoto(index) {
-                photos.forEach(photo => photo.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
+                const photos = document.querySelectorAll('.photo');
+                const dots = document.querySelectorAll('.photo-nav-dot');
                 
-                photos[index].classList.add('active');
-                dots[index].classList.add('active');
-                currentIndex = index;
+                if(photos.length > 0 && dots.length > 0) {
+                    photos.forEach(photo => photo.classList.remove('active'));
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    
+                    photos[index].classList.add('active');
+                    dots[index].classList.add('active');
+                    currentIndex = index;
+                }
             }
             
             // 点击导航点切换照片
@@ -625,7 +630,7 @@
         function setupMusicControl() {
             const musicControl = document.getElementById('music-control');
             const bgMusic = document.getElementById('bgMusic');
-            bgMusic.src = './music.m4a';
+            bgMusic.src = 'https://raw.githubusercontent.com/YouLaZi/mothers-day/main/music.m4a';
             let isPlaying = false;
             
             musicControl.addEventListener('click', function() {
